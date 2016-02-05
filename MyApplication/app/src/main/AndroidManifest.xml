@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.javier.note_app" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/notepad"
+        android:label="Note Pad"
+        android:screenOrientation="portrait"
+        android:theme="@style/Theme.AppCompat.NoActionBar">  <!-- "@style/AppTheme" "@android:style/Theme.NoTitleBar" -->
+        <activity
+            android:name=".Main"
+            android:screenOrientation="portrait"
+            android:label="Note Pad" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NewFile"
+            android:screenOrientation="portrait"
+            android:label="Note" >
+        </activity>
+        <activity
+            android:name=".LoadedFile"
+            android:screenOrientation="portrait"
+            android:label="Note" >
+        </activity>
+    </application>
+
+</manifest>
