@@ -8,4 +8,6 @@
     <string name="title_activity_loaded_file">LoadedFile</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="title_activity_pop">Pop</string>
+    <string name="title_activity_share">Share</string>
 </resources>

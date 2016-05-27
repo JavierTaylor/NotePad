@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.javier.note_app" >
+    package="com.example.javier.note_app">
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/notepad"
         android:label="Note Pad"
         android:screenOrientation="portrait"
-        android:theme="@style/Theme.AppCompat.NoActionBar">  <!-- "@style/AppTheme" "@android:style/Theme.NoTitleBar" -->
+        android:theme="@style/Theme.AppCompat.NoActionBar"> <!-- "@style/AppTheme" "@android:style/Theme.NoTitleBar" -->
         <activity
             android:name=".Main"
-            android:screenOrientation="portrait"
-            android:label="Note Pad" >
+            android:label="Note Pad"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,14 +20,22 @@
         </activity>
         <activity
             android:name=".NewFile"
-            android:screenOrientation="portrait"
-            android:label="Note" >
-        </activity>
+            android:label="Note"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoadedFile"
+            android:label="Note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Pop"
+            android:label="Are you sure?"
             android:screenOrientation="portrait"
-            android:label="Note" >
-        </activity>
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".Share"
+            android:label="Share Text"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
     </application>
 
 </manifest>

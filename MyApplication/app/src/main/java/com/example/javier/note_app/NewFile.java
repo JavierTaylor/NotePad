@@ -1,14 +1,17 @@
 package com.example.javier.note_app;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
@@ -81,23 +84,59 @@ public class NewFile extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-    public void delete(View view){
-        name = (EditText) findViewById(R.id.NAME);
-        FileName = name.getText().toString();
+        if(requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                name = (EditText) findViewById(R.id.NAME);
+                FileName = name.getText().toString();
 
-        if(FileName.matches("")) {
-            Toast.makeText(this, "Specify a file", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            deleteFile(FileName);    //"text.txt"
-            Toast.makeText(this, "File Deleted", Toast.LENGTH_SHORT).show();
-            finish();
-            //Intent intent = new Intent(this,Main.class);
-            //startActivity(intent);
+                if(FileName.matches("")) {
+                    Toast.makeText(this, "Specify a file", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    deleteFile(FileName);    //"text.txt"
+                    Toast.makeText(this, "File Deleted", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
+            }
+            else {
+            }
         }
     }
 
+    public void delete(View view){
+        Intent intent = new Intent(this, Pop.class);
+        startActivityForResult(intent, 1);
+    }
+
+    public void email(View view) {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+
+        data = (EditText) findViewById(R.id.DATA);
+        String text = data.getText().toString();
+        emailIntent.putExtra(Intent.EXTRA_TEXT, text);
+
+        startActivity(Intent.createChooser(emailIntent, "Send note with:"));
+    }
+
+/* This was to copy the file to the clipboard, but it is no longer necessary.
+    I have kept all of this stuff just to show myself how to do it in the future if need be
+
+    public void share(View view) {
+        TextView text = (TextView) findViewById(R.id.DATA);
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        clipboard.setText(text.getText());
+        Toast.makeText(this, "Text Copied!", Toast.LENGTH_SHORT).show();
+        //Intent intent = new Intent(this, Share.class);
+        //startActivity(intent);
+    }
+*/
 
 }
 
