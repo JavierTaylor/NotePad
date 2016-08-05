@@ -423,3 +423,11 @@ Small Device Styles
   }
 
 }
+
+.carousel-inner{
+  width: 100%;
+  max-height: 800px !important;
+}
+#pictures {
+  height: 800px !important;
+}
